@@ -13,7 +13,7 @@ for you project will also be automatically created for you.
 
 # Requirements
 
- * puppetlabs/apache
+ * puppetlabs/apache ( version 1.0.1 or greater )
  * puppetlabs/concat
  * puppetlabs/stdlib
  * puppetlabs/vcsrepo
@@ -149,8 +149,8 @@ group of the same name as the repository.
 
 # Limitations
 
-Currently this module is only tested with Ubuntu 12.04 and CentOS 6, although it's likely
-that it will function with other variants of Redhat and Debian OS families. 
+Currently this module is only tested with Ubuntu 12.04, Ubuntu 14.04 and CentOS 6, although 
+it's likely that it will function with other variants of Redhat and Debian OS families. 
 
 Although telling the module not to create a virtualhost, database, or code repository
 is possible via parameters in the trac::tracenv define, doing so is untested and is

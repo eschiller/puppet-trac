@@ -57,6 +57,9 @@ define trac::apache(
     }
     if ($::osfamily == 'Debian') {
       apache::mod {'auth_digest':}  
+      if ($::apache::version::default >= 2.4) {
+        apache::mod {'authn_core':}
+      }
     }
     apache::mod {'wsgi':}
   }
@@ -67,8 +70,12 @@ define trac::apache(
       apache::vhost {'redir_http_host':
         port         => '80',
         docroot      => '/var/www/html',
-        rewrite_cond => '%{HTTPS} off',
-        rewrite_rule => '(.*) https://%{HTTP_HOST}%{REQUEST_URI}',
+        rewrites     => [
+          {
+            rewrite_cond => ['%{HTTPS} off'],
+            rewrite_rule => ['(.*) https://%{HTTP_HOST}%{REQUEST_URI}'],  
+          },
+        ],
       }
     }    
   }
