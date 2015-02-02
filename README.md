@@ -13,7 +13,7 @@ for you project will also be automatically created for you.
 
 # Requirements
 
- * puppetlabs/apache ( version 1.0.1 or greater )
+ * puppetlabs/apache ( version 1.2.0 or greater )
  * puppetlabs/concat
  * puppetlabs/stdlib
  * puppetlabs/vcsrepo
