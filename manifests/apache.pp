@@ -48,6 +48,7 @@ define trac::apache(
   $envpath        = undef,
   $envpath_setype = undef,
   $redir_http     = false,
+  $vhost_docroot  = "/var/www",
   $vhost_name     = undef,  
 ){
   #check to see if apache is already defined so we don't hit a conflict.
@@ -69,7 +70,7 @@ define trac::apache(
     if ! defined (Apache::Vhost['redir_http_host']) {
       apache::vhost {'redir_http_host':
         port         => '80',
-        docroot      => '/var/www/html',
+        docroot      => $vhost_docroot,
         rewrites     => [
           {
             rewrite_cond => ['%{HTTPS} off'],
@@ -86,12 +87,12 @@ define trac::apache(
   apache::vhost{$name:
     vhost_name      => $vhost_name,
     port            => '443',
-    docroot         => '/var/www',
+    docroot         => $vhost_docroot,
     ssl             => true,
     custom_fragment => "WSGIScriptAlias /$name ${envpath}/apache/trac.wsgi", 
       
     directories     => [ 
-      { path               => '/var/www', 
+      { path               => $vhost_docroot, 
         options            => ['FollowSymLinks', 'MultiViews']},
           
       { path               => "${envpath}/apache", 

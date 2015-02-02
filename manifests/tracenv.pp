@@ -110,6 +110,7 @@ define trac::tracenv(
   $repo_group     = undef,
   $repo_location  = undef,
   $repo_type      = 'svn',
+  $vhost_docroot  = "/var/www",
   $vhost_name     = undef,
 ) {
   if ! defined(Class['trac']) {
@@ -210,6 +211,7 @@ define trac::tracenv(
       envpath        => $envpath,
       envpath_setype => $envpath_setype,
       vhost_name     => $vhost_name,
+      vhost_docroot  => $vhost_docroot,
       redir_http     => $redir_http,
     }
   }
