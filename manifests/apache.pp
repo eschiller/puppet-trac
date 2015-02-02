@@ -58,9 +58,6 @@ define trac::apache(
     }
     if ($::osfamily == 'Debian') {
       apache::mod {'auth_digest':}  
-      if ($::apache::version::default >= 2.4) {
-        apache::mod {'authn_core':}
-      }
     }
     apache::mod {'wsgi':}
   }
