@@ -1,7 +1,7 @@
 require 'digest'
 require 'tempfile'
 
-Puppet::Type.type(:trac_user).provide(:trac_user) do
+Puppet::Type.type(:tracuser).provide(:tracuser) do
 	confine :feature => :posix
 
 	defaultfor :kernel	=> "Linux"

@@ -1,7 +1,11 @@
-Puppet::Type.newtype(:trac_user) do
+Puppet::Type.newtype(:tracuser) do
 	@doc = "Add trac users to htaccess"
 
 	ensurable
+
+	autorequire(:tracenv) do
+		self[:tracenv]
+	end
 
 	newparam(:name) do
 		desc "The username to add"

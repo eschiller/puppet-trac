@@ -78,7 +78,7 @@ the same system, you could set up two environments as follows:
 Authentication to the Trac web application is handled through htdisgest. The file
 the application uses for auth will be located in '/trac/tracEnv/.htpasswd. 
 
-Trac users can be created with the trac_user resource type. Note that the realm must match
+Trac users can be created with the tracuser class. Note that the realm must match
 the tracenv name: 
 
 <pre>
@@ -87,8 +87,7 @@ the tracenv name:
 	trac::tracenv{'project1':
 	}
 
-	trac_user { "user1":
-	   ensure     => present, 
+	trac::tracuser { "user1":
 		password   => "unencryptedPassword",
 		realm      => "project1",
 	}
