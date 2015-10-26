@@ -77,11 +77,18 @@ define trac::repo(
   }
     
   if ($repo_type == 'svn') {  
+    package { 'subversion':
+      ensure => latest,
+    } ->
+
     vcsrepo { $name:
       ensure   => present,
       provider => svn,
       path     => $_repo_location,
-      require  => File[$envpath]
+      require  => [
+        File[$envpath],
+        Package[subversion],
+      ],
     }
     
 
