@@ -76,10 +76,25 @@ the same system, you could set up two environments as follows:
 ### Trac Authentication
 
 Authentication to the Trac web application is handled through htdisgest. The file
-the application uses for auth will be located in '/pathToTrac/.htpasswd. In order to
-allow users to access your Trac instance, you will first need to add them to the htdisgest
-file, with a command like the following.
+the application uses for auth will be located in '/trac/tracEnv/.htpasswd. 
 
+Trac users can be created with the tracuser class. Note that the realm must match
+the tracenv name: 
+
+<pre>
+   class {'trac':}
+
+	trac::tracenv{'project1':
+	}
+
+	trac::tracuser { "user1":
+		password   => "unencryptedPassword",
+		realm      => "project1",
+	}
+</pre>
+
+If you want to manage users outside of puppet, add them to the htpaasswd file manually, using a command
+like this: 
 <pre>
 htdigest /pathToTrac/.htpasswd projectName user
 </pre>
