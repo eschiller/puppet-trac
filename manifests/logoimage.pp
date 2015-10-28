@@ -34,7 +34,7 @@ define trac::logoimage(
     command   => "convert -background white -fill black -font Arial -size 220x label:$project_name $logo_path",
     logoutput => "on_failure",
     path      => ["/usr/local/sbin", "/usr/local/bin", "/usr/sbin", "/usr/bin", "/sbin", "/bin"],
-    creates   => "${envpath}/conf/trac.ini",
+    creates   => "$logo_path",
     require   => Package[$im_package_name],
   }
 }

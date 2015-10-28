@@ -90,9 +90,10 @@ define trac::db(
     }
     
     exec{"${name}_sqlite_db":
-      command   => "$sqlite_cmd $fulldbpath",
+      command   => "$sqlite_cmd $fulldbpath \".databases\"",
       logoutput => "on_failure",      
       path      => ["/usr/local/sbin", "/usr/local/bin", "/usr/sbin", "/usr/bin", "/sbin", "/bin"],
+      creates   => "$fulldbpath",
       require   => Package[$sqlite_pkg],
     }
     
