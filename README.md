@@ -73,6 +73,9 @@ the same system, you could set up two environments as follows:
   }
 </pre>
 
+Note: Nearly all settings in the trac.ini file can be dictated on a per-environment basis. 
+Check the tracenv.pp file for full details. 
+
 ### Trac Authentication
 
 Authentication to the Trac web application is handled through htdisgest. The file

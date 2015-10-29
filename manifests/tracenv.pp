@@ -71,6 +71,10 @@
 #   The fqdn of your named virtualhost. Wildcards with '*' are acceptable.
 #   Setting of this parameter is enforced by the trac::tracenv define.
 #
+# Note: Nearly all of the trac.ini configuration directives can be provided
+# by class arguments. For full details, check the documentation at: 
+# http://trac.edgewall.org/wiki/TracIni
+#
 # === Examples
 #
 # The trac class must be declared first to meet dependencies.
