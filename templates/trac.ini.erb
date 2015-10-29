@@ -6,21 +6,21 @@ max_zip_size = <%= @attachment_max_zip_size %>
 render_unsafe_content = <%= @attachment_render_unsafe_content %>
 
 [browser]
-color_scale = True
-downloadable_paths = /trunk, /branches/*, /tags/*
-hide_properties = svk:merge
-intermediate_color = 
-intermediate_point = 
-newest_color = (255, 136, 136)
-oldest_color = (136, 136, 255)
-oneliner_properties = trac:summary
-render_unsafe_content = false
-wiki_properties = trac:description
+color_scale = <%= @browser_color_scale %>
+downloadable_paths = <%= @browser_downloadable_paths %>
+hide_properties = <%= @browser_hide_properties %>
+intermediate_color = <%= @browser_intermediate_color %>
+intermediate_point = <%= @browser_intermediate_point %>
+newest_color = <%= @browser_newest_color %>
+oldest_color = <%= @browser_oldest_color %>
+oneliner_properties = <%= @browser_oneliner_properties %>
+render_unsafe_content = <%= @browser_render_unsafe_content %>
+wiki_properties = <%= @browser_wiki_properties %>
 
 [changeset]
-max_diff_bytes = 10000000
-max_diff_files = 0
-wiki_format_messages = true
+max_diff_bytes = <%= @changeset_max_diff_bytes %>
+max_diff_files = <%= @changeset_max_diff_files %>
+wiki_format_messages = <%= @changeset_wiki_format_messages %>
 
 [components]
 tracopt.versioncontrol.svn.* = enabled
@@ -123,94 +123,94 @@ min_query_length = <%= @search_min_query_length %>
 # extensions = <inherited>
 
 [ticket]
-default_cc = 
-default_component = 
-default_description = 
-default_keywords = 
-default_milestone = 
-default_owner = < default >
-default_priority = major
-default_resolution = fixed
-default_severity = 
-default_summary = 
-default_type = defect
-default_version = 
-max_comment_size = 262144
-max_description_size = 262144
-preserve_newlines = default
-restrict_owner = false
-workflow = ConfigurableTicketWorkflow
+default_cc = <%=  @ticket_default_cc  %>
+default_component = <%= @ticket_default_component  %>
+default_description = <%= @ticket_default_description  %>
+default_keywords = <%= @ticket_default_keywoards  %>
+default_milestone = <%= @ticket_default_milestone  %>
+default_owner = <%= @ticket_default_owner  %>
+default_priority = <%= @ticket_default_priority  %>
+default_resolution = <%= @ticket_default_resolution  %>
+default_severity = <%= @ticket_default_severity  %>
+default_summary = <%= @ticket_default_summary  %>
+default_type = <%= @ticket_default_type  %>
+default_version = <%= @ticket_default_version  %>
+max_comment_size = <%= @ticket_max_comment_size  %> 
+max_description_size = <%= @ticket_max_description_size  %> 
+preserve_newlines = <%= @ticket_preserve_newlines  %> 
+restrict_owner = <%= @ticket_restrict_owner  %> 
+workflow = <%= @ticket_workflow  %> 
 
 [ticket-workflow]
-accept = new,assigned,accepted,reopened -> accepted
-accept.operations = set_owner_to_self
-accept.permissions = TICKET_MODIFY
-leave = * -> *
-leave.default = 1
-leave.operations = leave_status
-reassign = new,assigned,accepted,reopened -> assigned
-reassign.operations = set_owner
-reassign.permissions = TICKET_MODIFY
-reopen = closed -> reopened
-reopen.operations = del_resolution
-reopen.permissions = TICKET_CREATE
-resolve = new,assigned,accepted,reopened -> closed
-resolve.operations = set_resolution
-resolve.permissions = TICKET_MODIFY
+accept = <%= @ticket_workflow_accept  %>
+accept.operations = <%= @ticket_workflow_accept_operations  %> 
+accept.permissions = <%= @ticket_workflow_accept_permissions  %>
+leave = <%= @ticket_workflow_leave %>
+leave.default = <%= @ticket_workflow_leave_default %>
+leave.operations = <%= @ticket_workflow_leave_operations %>
+reassign = <%= @ticket_workflow_reassign %>
+reassign.operations = <%= @ticket_workflow_reassign_operations %>
+reassign.permissions =<%= @ticket_workflow_reassign_permissions %>
+reopen = <%= @ticket_workflow_reopen %>
+reopen.operations = <%= @ticket_workflow_reopen_operations %>
+reopen.permissions = <%= @ticket_workflow_reopen_permissions %>
+resolve = <%= @ticket_workflow_resolve %>
+resolve.operations = <%= @ticket_workflow_resolve_operations %>
+resolve.permissions = <%= @ticket_workflow_resolve_permissions %>
 
 [timeline]
-abbreviated_messages = True
-changeset_collapse_events = false
-changeset_long_messages = false
-changeset_show_files = 0
-default_daysback = 30
-max_daysback = 90
-newticket_formatter = oneliner
-ticket_show_details = false
+abbreviated_messages = <%= @timeline_abbreviated_messages %>
+changeset_collapse_events = <%= @timeline_changeset_collapse_events %>
+changeset_long_messages = <%= @timeline_changeset_long_messages %>
+changeset_show_files = <%= @timeline_changeset_show_files %>
+default_daysback = <%= @timeline_default_daysback %>
+max_daysback = <%= @timeline_max_daysback %>
+newticket_formatter = <%= @timeline_newticket_formatter %>
+ticket_show_details = <%= @timeline_ticket_show_details %>
 
 [trac]
-auth_cookie_lifetime = 0
-auth_cookie_path = 
-authz_file = 
-authz_module_name = 
-auto_preview_timeout = 2.0
-auto_reload = False
-backup_dir = db
-base_url = 
-check_auth_ip = false
+auth_cookie_lifetime = <%= @trac_auth_cookie_lifetime %>
+auth_cookie_path = <%= @trac_auth_cookie_path %>
+authz_file = <%= @trac_authz_file %>
+authz_module_name = <%= @trac_authz_module_name %>
+auto_preview_timeout = <%= @trac_auto_preview_timeout %>
+auto_reload = <%= @trac_auto_reload %>
+backup_dir = <%= @trac_backup_dir %>
+base_url = <%= @trac_base_url %>
+check_auth_ip = <%= @trac_check_auth_ip %>
 database = <%= @dburi %>
-debug_sql = False
-default_charset = utf-8
-default_dateinfo_format = relative
-genshi_cache_size = 128
-htdocs_location = 
-ignore_auth_case = false
-jquery_location = 
-jquery_ui_location = 
-jquery_ui_theme_location = 
-mainnav = wiki, timeline, roadmap, browser, tickets, newticket, search
-metanav = login, logout, prefs, help, about
-mysqldump_path = mysqldump
-never_obfuscate_mailto = false
-permission_policies = DefaultPermissionPolicy, LegacyAttachmentPolicy
-permission_store = DefaultPermissionStore
-pg_dump_path = pg_dump
+debug_sql = <%= @trac_debug_sql %>
+default_charset = <%= @trac_default_charset %>
+default_dateinfo_format = <%= @trac_default_dateinfo_format %>
+genshi_cache_size = <%= @trac_genshi_cache_size %>
+htdocs_location = <%= @trac_htdocs_location %>
+ignore_auth_case = <%= @trac_ignore_auth_case %>
+jquery_location = <%= @trac_jquery_location %>
+jquery_ui_location = <%= @trac_jquery_ui_location %>
+jquery_ui_theme_location = <%= @trac_jquery_ui_theme_location %>
+mainnav = <%= @trac_mainnav %>
+metanav = <%= @trac_metanav %>
+mysqldump_path = <%= @trac_mysqldump_path %>
+never_obfuscate_mailto = <%= @trac_never_obfuscate_mailto %>
+permission_policies = <%= @trac_permission_policies %>
+permission_store = <%= @trac_permission_store %>
+pg_dump_path = <%= @trac_pg_dump_path %>
 repository_dir = <%= @_repo_location %>
-repository_sync_per_request = (default)
+repository_sync_per_request = <%= @trac_repository_sync_per_request %>
 repository_type = <%= @repo_type %>
-resizable_textareas = true
-secure_cookies = False
-show_email_addresses = false
-show_ip_addresses = false
-timeout = 20
-use_base_url_for_redirect = False
+resizable_textareas = <%= @trac_resizable_textareas %>
+secure_cookies = <%= @trac_secure_cookies %>
+show_email_addresses = <%= @trac_show_email_addresses %>
+show_ip_addresses = <%= @trac_show_ip_addresses %>
+timeout = <%= @trac_timeout %>
+use_base_url_for_redirect = <%= @trac_use_base_url_for_redirect %>
 
 [versioncontrol]
-allowed_repository_dir_prefixes = 
+allowed_repository_dir_prefixes = <%= @versioncontrol_allowed_repository_dir_prefixes %>
 
 [wiki]
-ignore_missing_pages = false
-max_size = 262144
-render_unsafe_content = false
-safe_schemes = cvs, file, ftp, git, irc, http, https, news, sftp, smb, ssh, svn, svn+ssh
-split_page_names = false
+ignore_missing_pages = <%= @wiki_ignore_missing_pages %>
+max_size = <%= @wiki_max_size %>
+render_unsafe_content = <%= @wiki_render_unsafe_content %>
+safe_schemes = <%= @wiki_safe_schemes %>
+split_page_names = <%= @wiki_split_page_names %>
