@@ -55,6 +55,19 @@ class trac(
   $package_name    = $trac::params::package_name,
 ) inherits trac::params {
   
+  @package { $package_name: 
+    ensure => 'installed', 
+  }
+
+  @package { 'python-subversion':
+    ensure => present,
+  }
+
+  @package { 'subversion':
+    ensure => latest,
+  }
+
+  
   #if we're using easy_install method, install via python easy install,
   #else install from distribution package management
   if ($easy_install) {
@@ -68,9 +81,7 @@ class trac(
       creates => '/usr/bin/trac-admin',
     }
   } else {
-    package{$package_name:
-      ensure => 'installed'
-    }
+    realisze Package[$package_name]
   }
 
   if ($open_firewall) {
@@ -93,9 +104,7 @@ class trac(
   
   #if using debian, install the python subversion bindings
   if ($::osfamily == 'Debian') {
-    package{'python-subversion':
-      ensure => present,
-    }
+    realize Package['python-subversion']
   }
   
   package{$im_package_name:
