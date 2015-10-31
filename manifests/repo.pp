@@ -61,6 +61,7 @@ define trac::repo(
   # or if it should be handled like the rest of the repos (with respect to 
   # selinux changes that are done by the module), so repo_dir is simply set
   # to the repo path.
+
   if $repo_location {
     $_repo_location = $repo_location
     $repo_dir = $repo_location
@@ -75,11 +76,11 @@ define trac::repo(
     }
     $_repo_location = "${repo_dir}/$name"
   }
+
     
   if ($repo_type == 'svn') {  
-    package { 'subversion':
-      ensure => latest,
-    } ->
+
+    realize Package['subversion']
 
     vcsrepo { $name:
       ensure   => present,
