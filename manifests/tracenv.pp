@@ -143,6 +143,8 @@ define trac::tracenv(
   $mimeviewer_mime_map_patterns         = 'text/plain:README|INSTALL|COPYING.*',
   $mimeviewer_tab_width                 = '8',
   $mimeviewer_treat_as_binary           = 'application/octet-stream, application/pdf, application/postscript, application/msword,application/rtf,',
+  $mimeviewer_pygments_default_style    = '',
+  $mimeviewer_pygments_modes            = '',
   $notification_admit_domains           = '',
   $notification_always_notify_owner     = false,
   $notification_always_notify_reporter  = false,
@@ -264,6 +266,12 @@ define trac::tracenv(
   $wiki_render_unsafe_content           = false,
   $wiki_safe_schemes                    = 'cvs, file, ftp, git, irc, http, https, news, sftp, smb, ssh, svn, svn+ssh',
   $wiki_split_page_names                = false,
+  $svn_branches                         = 'trunk,branches/*',
+  $svn_tags                             = 'tags/*',
+  $svn_authz_file                       = '',
+  $svn_authz_module_name                = '',
+  $svn_eol_style                        = '',
+  $ticket_custom                        = '',
   $versioncontrol_allowed_repository_dir_prefixes = '',
 ) {
   if ! defined(Class['trac']) {
