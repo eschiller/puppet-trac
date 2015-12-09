@@ -101,6 +101,9 @@ define trac::tracenv(
   $adjust_selinux                       = $trac::params::adjust_selinux,
   $apache_group                         = $trac::params::apache_group,
   $apache_user                          = $trac::params::apache_user,
+  $apache_ssl                           = true,
+  $apache_ssl_cert                      = undef,
+  $apache_ssl_key                       = undef,
   $create_db                            = true,
   $create_repo                          = true,
   $create_vhost                         = true,
@@ -137,12 +140,15 @@ define trac::tracenv(
   $logging_custom_log_file              = false,
   $logging_log_level                    = 'DEBUG',
   $logging_log_type                     = 'none',
+  $logging_log_file                     = '',
   $milestone_stats_provider             = 'DefaultTicketGroupStatsProvider',
   $mimeviewer_max_preview_size          = '262144',
   $mimeviewer_mime_map                  = 'text/x-dylan:dylan, text/x-idl:ice, text/x-ada:ads:adb',
   $mimeviewer_mime_map_patterns         = 'text/plain:README|INSTALL|COPYING.*',
   $mimeviewer_tab_width                 = '8',
   $mimeviewer_treat_as_binary           = 'application/octet-stream, application/pdf, application/postscript, application/msword,application/rtf,',
+  $mimeviewer_pygments_default_style    = '',
+  $mimeviewer_pygments_modes            = '',
   $notification_admit_domains           = '',
   $notification_always_notify_owner     = false,
   $notification_always_notify_reporter  = false,
@@ -264,6 +270,12 @@ define trac::tracenv(
   $wiki_render_unsafe_content           = false,
   $wiki_safe_schemes                    = 'cvs, file, ftp, git, irc, http, https, news, sftp, smb, ssh, svn, svn+ssh',
   $wiki_split_page_names                = false,
+  $svn_branches                         = 'trunk,branches/*',
+  $svn_tags                             = 'tags/*',
+  $svn_authz_file                       = '',
+  $svn_authz_module_name                = '',
+  $svn_eol_style                        = '',
+  $ticket_custom                        = '',
   $versioncontrol_allowed_repository_dir_prefixes = '',
 ) {
   if ! defined(Class['trac']) {
@@ -359,13 +371,15 @@ define trac::tracenv(
   # create apache vhost by calling trac::apache
   if $create_vhost {
     trac::apache{$name:
-      apache_user    => $apache_user,
-      apache_group   => $apache_group,
-      envpath        => $envpath,
-      envpath_setype => $envpath_setype,
-      vhost_name     => $vhost_name,
-      vhost_docroot  => $vhost_docroot,
-      redir_http     => $redir_http,
+      apache_user     => $apache_user,
+      apache_group    => $apache_group,
+      envpath         => $envpath,
+      envpath_setype  => $envpath_setype,
+      vhost_name      => $vhost_name,
+      vhost_docroot   => $vhost_docroot,
+      redir_http      => $redir_http,
+      apache_ssl_key  => $apache_ssl_key,
+      apache_ssl_cert => $apache_ssl_cert,
     }
   }
  

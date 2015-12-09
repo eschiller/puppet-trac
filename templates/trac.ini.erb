@@ -59,6 +59,8 @@ mime_map = <%= @mimeviewer_mime_map %>
 mime_map_patterns = <%= @mimeviewer_mime_map_patterns %>
 tab_width = <%= @mimeviewer_tab_width %>
 treat_as_binary = <%= @mimeviewer_treat_as_binary %>
+pygments_default_style = <%= @mimeviewer_pygments_default_style %>
+pygments_modes = <%= @mimeviewer_pygments_modes %>
 
 [notification]
 admit_domains = <%= @notification_admit_domains %>
@@ -205,6 +207,13 @@ show_ip_addresses = <%= @trac_show_ip_addresses %>
 timeout = <%= @trac_timeout %>
 use_base_url_for_redirect = <%= @trac_use_base_url_for_redirect %>
 
+[svn]
+authz_file = <%= @svn_authz_file %>
+authz_module_name = <%= @svn_authz_module_name %>
+eol_style = <%= @svn_eol_style %>
+branches = <%= @svn_branches %>
+tags = <%= @svn_tags %>
+
 [versioncontrol]
 allowed_repository_dir_prefixes = <%= @versioncontrol_allowed_repository_dir_prefixes %>
 
@@ -214,3 +223,6 @@ max_size = <%= @wiki_max_size %>
 render_unsafe_content = <%= @wiki_render_unsafe_content %>
 safe_schemes = <%= @wiki_safe_schemes %>
 split_page_names = <%= @wiki_split_page_names %>
+
+[ticket-custom]
+<%= @ticket_custom %>
