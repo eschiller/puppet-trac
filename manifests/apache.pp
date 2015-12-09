@@ -1,9 +1,4 @@
-# == Define: trac::apache
-#
-# Define to handle automatic creation of apache virtualhost. Should be called
-# by tracenv define. This define utilizes the puppetlabs apache module.
-#
-# === Parameters
+# == Define: trac::apache # # Define to handle automatic creation of apache virtualhost. Should be called # by tracenv define. This define utilizes the puppetlabs apache module.  # # === Parameters
 #
 # [*apache_user*]
 #   The name of user the apache service runs under, used to ensure proper
@@ -45,6 +40,8 @@
 define trac::apache(
   $apache_user    = $trac::params::apache_user,
   $apache_group   = $trac::params::apache_group,
+  $apache_ssl_key = undef,
+  $apache_ssl_cert = undef,
   $envpath        = undef,
   $envpath_setype = undef,
   $redir_http     = false,
@@ -86,7 +83,9 @@ define trac::apache(
     port            => '443',
     docroot         => $vhost_docroot,
     ssl             => true,
-    custom_fragment => "WSGIScriptAlias /$name ${envpath}/apache/trac.wsgi", 
+    ssl_key         => $apache_ssl_key,
+    ssl_cert        => $apache_ssl_cert,
+    custom_fragment => "WSGIScriptAlias /$name ${envpath}/apache/trac.wsgi",
       
     directories     => [ 
       { path               => $vhost_docroot, 
