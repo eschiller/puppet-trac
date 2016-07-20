@@ -67,7 +67,7 @@ define trac::repo(
     $repo_dir = $repo_location
   } else {
     $repo_dir = "$envpath/repos"
-    if ! defined ( File[$repodir] ) {
+    if ! defined ( File[$repo_dir] ) {
       file{$repo_dir:
         ensure  => 'directory',
         notify  => Vcsrepo[$name],
