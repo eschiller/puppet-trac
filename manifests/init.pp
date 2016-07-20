@@ -81,7 +81,7 @@ class trac(
       creates => '/usr/bin/trac-admin',
     }
   } else {
-    realisze Package[$package_name]
+    realize Package[$package_name]
   }
 
   if ($open_firewall) {
